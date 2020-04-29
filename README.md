@@ -33,7 +33,7 @@ Caso essas funcionalidades ainda não estejam funcionando, será necessário ati
 nas configurações de sua conta Google.
 
 O acesso ao painel administrativo se dá pela URL /colaborador/colaboradores/home/login. Há uma conta padrão cadastrada com o
-e-mail 'colaborador@gmail.com' e senha '123456'.
+e-mail 'colaborador@gmail.com' e senha '123456' para testes.
 
 # Preview do projeto
 
