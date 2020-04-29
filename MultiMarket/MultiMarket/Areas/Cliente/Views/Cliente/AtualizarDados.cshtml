@@ -1,0 +1,123 @@
+﻿@model MultiMarket.Models.Cliente
+@{
+    ViewData["Title"] = "Atualizar";
+}
+@if (TempData["MSG_S"] != null)
+{
+    <br />
+    <br />
+    <div class="container">
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    </div>
+}
+<form asp-action="AtualizarDados" asp-controller="Cliente" method="post">
+    <main role="main">
+        <section class="container" style="margin-top: 50px">
+            <div class="row">
+                <aside class="col-sm-6">
+                    <a class="btn btn-outline-primary" asp-action="Painel" asp-controller="Home">Voltar</a>
+                    <h3 class="subtitle-doc">
+                        Atualizar dados
+                    </h3>
+                    <div id="code_register_1">
+                        <div class="card">
+                            <article class="card-body">
+                                <div class="form-row">
+                                    <div class="col form-group">
+                                        <label asp-for="Nome">Nome</label>
+                                        <input type="text" asp-for="Nome" class="form-control" placeholder="">
+                                        <span asp-validation-for="Nome" class="erro"></span>
+                                    </div> <!-- form-group end.// -->
+                                    <div class="col form-group">
+                                        <label>Nascimento</label>
+                                        <input type="text" asp-for="Nascimento" class="form-control data" placeholder="">
+                                        <span asp-validation-for="Nascimento" class="erro"></span>
+                                    </div> <!-- form-group end.// -->
+                                </div> <!-- form-row end.// -->
+                                <div class="form-group">
+                                    <label asp-for="Email">E-mail</label>
+                                    <input type="email" asp-for="Email" class="form-control" placeholder="">
+                                    <span asp-validation-for="Email" class="erro"></span>
+                                    <small class="form-text text-muted">
+                                        Nós não compartilharemos seu e-mail com ninguém
+                                    </small>
+                                </div> <!-- form-group end.// -->
+                                <div class="form-group">
+                                    <p>Sexo</p>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Sexo" value="M">
+                                        <span class="form-check-label"> Masculino </span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" asp-for="Sexo" value="F">
+                                        <span class="form-check-label"> Feminino </span>
+                                    </label>
+                                    <p><span asp-validation-for="Sexo" class="erro"></span></p>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="CPF">CPF</label>
+                                        <input type="text" asp-for="CPF" class="form-control cpf">
+                                        <span asp-validation-for="CPF" class="erro"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Telefone">Telefone</label>
+                                        <input class="form-control tel" asp-for="Telefone" type="text">
+                                        <span asp-validation-for="Telefone" class="erro"></span>
+                                    </div>
+                                </div>
+                                <p class="msg-error alert alert-danger" style="display:none;"></p>
+                                <div class="form-group">
+                                    <label asp-for="CEP">CEP</label>
+                                    <input class="form-control cep" asp-for="CEP" type="text">
+                                    <span asp-validation-for="CEP" class="erro"></span>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Estado">Estado</label>
+                                        <input type="text" asp-for="Estado" readonly class="form-control">
+                                        <span asp-validation-for="Estado" class="erro"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Cidade">Cidade</label>
+                                        <input class="form-control" readonly asp-for="Cidade" type="text">
+                                        <span asp-validation-for="Cidade" class="erro"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Rua">Rua</label>
+                                        <input type="text" readonly asp-for="Rua" class="form-control">
+                                        <span asp-validation-for="Rua" class="erro"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Bairro">Bairro</label>
+                                        <input class="form-control" readonly asp-for="Bairro" type="text">
+                                        <span asp-validation-for="Bairro" class="erro"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Complemento">Complemento</label>
+                                        <input type="text" asp-for="Complemento" class="form-control">
+                                        <span asp-validation-for="Complemento" class="erro"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="Numero">Numero</label>
+                                        <input class="form-control" asp-for="Numero" type="number">
+                                        <span asp-validation-for="Numero" class="erro"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+                                </div> <!-- form-group// -->
+                            </article> <!-- card-body end .// -->
+                        </div> <!-- card.// -->
+
+                    </div> <!-- code-wrap.// -->
+                </aside>
+            </div>
+        </section>
+    </main>
+</form>
+

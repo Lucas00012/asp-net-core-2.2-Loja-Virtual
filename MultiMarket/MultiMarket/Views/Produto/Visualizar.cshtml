@@ -1,0 +1,92 @@
+﻿@model MultiMarket.Models.Produto
+@using MultiMarket.Models
+@{
+    ViewData["Title"] = "Visualizar";
+}
+<br style="clear:both" />
+
+<main role="main">
+
+    <div class="container" id="code_prod_detail" style="margin-top: 50px">
+        <div class="card">
+            <div class="row no-gutters">
+                <aside class="col-sm-5 border-right">
+                    <article class="gallery-wrap">
+                        @if (Model.ImagemProduto.Count() > 0)
+                        {
+                            <div class="img-big-wrap">
+                                <div> <a href="@Model.ImagemProduto[0].Caminho" data-fancybox=""><img src="@Model.ImagemProduto[0].Caminho"></a></div>
+                            </div> <!-- slider-product.// -->
+                            <div class="img-small-wrap">
+                                @foreach (Imagem imagem in Model.ImagemProduto)
+                                {
+                                    <div class="item-gallery"> <img src="@imagem.Caminho"></div>
+                                }
+                            </div> <!-- slider-nav.// -->
+                        }
+                        else
+                        {
+                            <div class="img-big-wrap">
+                                <div> <a href="~/img/vender-produtos.png" data-fancybox=""><img src="~/img/vender-produtos.png"></a></div>
+                            </div> <!-- slider-product.// -->
+                        }
+                    </article> <!-- gallery-wrap .end// -->
+                </aside>
+                <aside class="col-sm-7">
+                    <article class="p-5">
+                        <h3 class="title mb-3">@Model.Nome</h3>
+
+                        <div class="mb-3">
+                            <var class="price h3 text-warning">
+                                <span class="currency">R$</span><span>@Model.Valor</span>
+                            </var>
+                            <span>/por un</span>
+                        </div> <!-- price-detail-wrap .// -->
+                        <dl>
+                            <dt>Descrição</dt>
+                            <dd>
+                                <p>
+                                    @Model.Descricao
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="row">
+                            <dt class="col-sm-3">Peso</dt>
+                            <dd class="col-sm-9">@Model.Peso kg</dd>
+
+                            <dt class="col-sm-3">Largura</dt>
+                            <dd class="col-sm-9">@Model.Largura cm</dd>
+
+                            <dt class="col-sm-3">Altura</dt>
+                            <dd class="col-sm-9">@Model.Altura cm</dd>
+
+                            <dt class="col-sm-3">Comprimento</dt>
+                            <dd class="col-sm-9">@Model.Comprimento cm</dd>
+                        </dl>
+                        <div class="rating-wrap">
+
+                        </div> <!-- rating-wrap.// -->
+                        <hr>
+                        <hr>
+                        <input type="hidden" value="@Model.Id" class="produto-id" />
+                        <a asp-action="AdicionarItem" asp-controller="CarrinhoCompra" asp-route-id="@Model.Id" class="btn  btn-outline-primary btn-adiciona">
+                            <i class="fas fa-shopping-cart"></i> Adicionar ao carrinho
+                        </a>
+                    </article> <!-- card-body.// -->
+                </aside> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </div>
+    @if (TempData["MSG_E"] != null)
+    {
+        <div class="container text-center">
+            <p id="error-msg" class="alert alert-danger msg-error">@TempData["MSG_E"]</p>
+        </div>
+    }
+    else
+    {
+        <div class="container text-center">
+            <p id="error-msg" class="alert alert-danger msg-error" style="display:none;"></p>
+        </div>
+    }
+</main>

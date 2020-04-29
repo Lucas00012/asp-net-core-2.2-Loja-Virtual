@@ -1,0 +1,53 @@
+﻿@model MultiMarket.Models.Pedido;
+@using MultiMarket.Models
+@using MultiMarket.Models.ProdutoAgregador
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<div class="container text-center" style="font-family:Arial">
+    <h1>Pedido nº @Model.Id-@Model.TransactionId</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+            </tr>
+            @foreach (ProdutoItem produto in ViewBag.Produtos)
+            {
+                <tr>
+                    <td>@produto.Nome</td>
+                    <td>@produto.QuantidadeCarrinhoProduto</td>
+                    <td>R$ @produto.Valor</td>
+                </tr>
+            }
+        </thead>
+        <tr>
+            @{
+                decimal ValorFrete = (decimal)ViewBag.Transacao.Shipping.Fee / 100;
+            }
+            <td colspan="2">Frete</td>
+            <td>R$ @ValorFrete.ToString("0.00")</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="font-size:20px;">TOTAL</th>
+            <td style="font-size:20px;">R$ @Model.ValorTotal</td>
+        </tr>
+
+    </table>
+    @if (Model.FormaPagamento == TipoPagamentoConstant.BOLETO)
+    {
+        <br />
+        <br />
+        <h3>Boleto</h3>
+        <!--OBS: O ambiente de teste do PAGARME não gera um link de boleto! A propriedade BoletoUrl redireciona para a página principal da empresa-->
+        <iframe src="@ViewBag.Transacao.BoletoUrl" style="width: 100%; min-height: 400px; border: 1px solid #CCC;"></iframe>
+        <a target="_blank" href="@ViewBag.Transacao.BoletoUrl" class="btn btn-outline-secondary">Imprimir</a>
+    }
+    <br />
+    <br />
+    <a asp-action="Index" asp-controller="Home" class="btn btn-outline-primary btn-lg">Voltar a comprar</a>
+</div>
+

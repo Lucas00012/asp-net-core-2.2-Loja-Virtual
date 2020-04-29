@@ -1,0 +1,172 @@
+﻿@model List<MultiMarket.Models.ProdutoAgregador.ProdutoItem>
+@inject MultiMarket.Libraries.Login.LoginCliente _loginCliente
+@{
+    ViewData["Title"] = "Index";
+    decimal? Subtotal = 0;
+}
+
+<br />
+<br />
+@if (TempData["MSG_E"] != null)
+{
+    <div class="container text-center">
+        <p class="alert alert-danger msg-error">@TempData["MSG_E"]</p>
+    </div>
+}
+else
+{
+<div class="container text-center">
+    <p class="alert alert-danger msg-error" style="display:none"></p>
+</div>
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="container">
+
+        <section class="container" id="order" style="margin-top: 50px">
+
+            <h2 class="title-doc">Carrinho de compras</h2>
+
+
+
+            <div id="code_cart">
+                <div class="card">
+                    <table class="table table-hover shopping-cart-wrap">
+                        <thead class="text-muted">
+                            <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col" width="120">Quantidade</th>
+                                <th scope="col" width="120">Preço</th>
+                                <th scope="col" width="200" class="text-right">Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <figure class="media">
+                                            @if (item.ImagemProduto.Count() > 0)
+                                            {
+                                                <div class="img-wrap"><img src="@item.ImagemProduto[0].Caminho" class="img-thumbnail img-sm"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="img-wrap"><img src="~/img/vender-produtos.png" class="img-thumbnail img-sm"></div>
+                                            }
+
+                                            <figcaption class="media-body">
+                                                <h6 class="title text-truncate">@item.Nome</h6>
+                                                <dl class="dlist-inline small">
+                                                    <dt>Comprimento: </dt>
+                                                    <dd>@item.Comprimento cm - </dd>
+                                                    <dt>Largura:</dt>
+                                                    <dd>@item.Largura cm</dd>
+                                                </dl>
+                                                <dl class="dlist-inline small">
+                                                    <dt>Altura: </dt>
+                                                    <dd>@item.Altura cm - </dd>
+                                                    <dt>Peso:</dt>
+                                                    <dd>@item.Peso kg</dd>
+                                                </dl>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    @{
+                                        Subtotal += item.Valor * item.QuantidadeCarrinhoProduto;
+                                    }
+                                    <td style="width:180px;">
+                                        <input type="hidden" value="@item.Id" />
+                                        <input type="hidden" value="@item.Valor" />
+                                        <input class="form-control qtd-produto col-sm-8" type="number" value="@item.QuantidadeCarrinhoProduto" onkeydown="return false" min="1" max="@(item.Quantidade)" />
+                                        <dl class="dlist-inline small">
+                                            <dt>Em estoque: </dt>
+                                            <dd class="qtd-max">@item.Quantidade un.</dd>
+                                        </dl>
+                                    </td>
+                                    <td style="width:180px;">
+                                        <div class="price-wrap">
+                                            <var class="price">R$ @(item.Valor * item.QuantidadeCarrinhoProduto)</var>
+                                            <small class="text-muted">(R$ @item.Valor Cada)</small>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
+                                    <td class="text-right">
+                                        <a asp-controller="CarrinhoCompra" asp-action="RemoverItem" asp-route-id="@item.Id" class="btn btn-outline-danger"> × Remover</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div> <!-- card.// -->
+            </div> <!-- code-wrap.// -->
+        </section>
+    </div>
+
+    <div class="container row naosei col-sm-8">
+        <table class="table table-borderless">
+            <caption align="top">Resumo</caption>
+            <tr>
+                <th>Subtotal:</th>
+                <td class="valor-soma">R$ @Subtotal</td>
+            </tr>
+            <tr>
+                <th>Frete:</th>
+                <td class="valor-frete">Não calculado</td>
+            </tr>
+            <tr>
+                <th>TOTAL:</th>
+                <td class="valor-total">Indisponível</td>
+            </tr>
+        </table>
+        <table class="table table-borderless">
+            <caption align="top">Frete</caption>
+            <thead>
+                <tr>
+                    <th>CEP:</th>
+                    @if (ViewData["CEP"] != null)
+                    {
+                        <td colspan="2"><input class="form-control cep" type="text" value="@ViewData["CEP"]" name="cep" /></td>
+                    }
+                    else
+                    {
+                        <td colspan="2"><input class="form-control cep" type="text" value="" name="cep" /></td>
+                    }
+                    <td><a href="#" class="btn btn-outline-primary btn-calcular-frete">Calcular</a></td>
+                </tr>
+            </thead>
+            <tbody class="frete-resultado">
+            </tbody>
+        </table>
+        @if (_loginCliente.BuscaClienteSessao() != null)
+        {
+            <a href="/carrinhocompra/enderecoentrega" class="btn btn-primary pedido-continuar disabled">Continuar</a>
+        }
+        else
+        {
+            <a href="cliente/home/login?returnUrl=/carrinhocompra/enderecoentrega" class="btn btn-primary pedido-continuar disabled">Continuar</a>
+        }
+    </div>
+    <!--
+       <div class="col-md-3 card fixer">
+        <p><i class="fas fa-shopping-bag"></i> Azul</p>
+        <p><i class="fas fa-user-alt"></i> Masculino e Feminino</p>
+        <p><i class="fas fa-star"></i> R$ 30,00</p>
+        <p><i class="fas fa-shopping-cart"></i>   Total: R$ 500,00</p>
+    </div>
+    -->
+    <script src="~/js/ActionsCarrinho.js"></script>
+
+}
+else
+{
+    <br />
+    <br />
+    <div style="text-align:center;">
+        <p>Ainda não adicionou nenhum produto ao seu carrinho? <a asp-action="Index" asp-controller="Home">Clique aqui</a> e comece a comprar agora mesmo!</p>
+
+        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-primary btn-compra">Vamos as compras</a>
+    </div>
+}

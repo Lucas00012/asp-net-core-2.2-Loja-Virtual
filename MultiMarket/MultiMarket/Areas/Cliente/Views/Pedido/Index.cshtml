@@ -1,0 +1,59 @@
+﻿@using MultiMarket.Libraries.Pagination
+@using MultiMarket.Models
+@model PaginationEngine<Pedido>
+@{
+    ViewData["Title"] = "Index";
+}
+@if (Model.Elementos.Count() > 0)
+{
+    <br />
+    <h1 class="text-center">Lista de pedidos</h1>
+    <br />
+    <div class="container">
+        <a class="btn btn-outline-primary" href="/cliente/home/painel">Voltar</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nº do pedido</th>
+                    <th>Status</th>
+                    <th>Pagamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            @foreach (Pedido pedido in Model.Elementos)
+            {
+        <tr>
+            <td>@pedido.Id-@pedido.TransactionId</td>
+            <td>@pedido.Situacao</td>
+            <td>@pedido.FormaPagamento</td>
+            <td>
+                <a asp-action="Visualizar" asp-route-id="@pedido.Id" class="btn btn-success">Visualizar</a>
+            </td>
+        </tr>
+            }
+        </table>
+        @{
+            string HasNextPage = Model.HasNextPage ? "" : "disabled";
+            string HasPreviousPage = Model.HasPreviousPage ? "" : "disabled";
+        }
+        <a asp-action="Index"
+           asp-route-pagina="@(Model.PageIndex-1)"
+           class="btn btn-dark @HasPreviousPage">Voltar</a>
+        <a asp-action="Index"
+           asp-route-pagina="@(Model.PageIndex+1)"
+           class="btn btn-dark @HasNextPage">Avançar</a>
+    </div>
+}
+else
+{
+    <br />
+    <br />
+    <div class="container text-center">
+        <a class="btn btn-outline-primary" href="/cliente/home/painel">Voltar</a>
+        <p>Nenhum pedido foi encontrado! <a href="/">Clique aqui</a> e comece a comprar agora mesmo!</p>
+        <a class="btn btn-outline-primary btn-lg" href="/">Vamos as compras</a>
+    </div>
+}
+
+
+

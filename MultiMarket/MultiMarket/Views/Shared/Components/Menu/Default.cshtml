@@ -1,0 +1,75 @@
+﻿@using MultiMarket.Models
+@inject MultiMarket.Libraries.Login.LoginCliente _loginCliente
+@model List<Categoria>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/"> MultiMarket</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item @((ViewContext.RouteData.Values["controller"].ToString()=="Home" && ViewContext.RouteData.Values["action"].ToString()=="Index")? "active" : "" )">
+                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            @{
+                List<Categoria> CategoriasPrincipais = Model.Where(a => a.CategoriaPaiId == null).ToList();
+                List<Categoria> TodasCategorias = Model.ToList();
+                ViewData["TodasCategorias"] = TodasCategorias;
+            }
+            <li class="dropdown @((ViewContext.RouteData.Values["controller"].ToString()=="Home" && ViewContext.RouteData.Values["action"].ToString()=="Categoria")? "active" : "" )">
+                <a id="dLabel" role="button" data-toggle="dropdown" class="nav-link dropdown-toggle btn" aria-haspopup="true" aria-expanded="false" data-target="#">
+                    <i class="fas fa-list-ul"></i> Categorias <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                    @foreach (Categoria categoria in CategoriasPrincipais)
+                    {
+                        @await Html.PartialAsync("~/Views/Shared/Components/Menu/_Submenu.cshtml", new ViewDataDictionary(ViewData) { { "CategoriaPai", categoria } })
+                    }
+                </ul>
+            </li>
+
+
+            <li class="nav-item @((ViewContext.RouteData.Values["controller"].ToString()=="Home" && ViewContext.RouteData.Values["action"].ToString()=="Contato")? "active" : "" )">
+                <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
+            </li>
+        </ul>
+        @{
+            string pesquisa = Context.Request.Query["pesquisa"];
+            string ordem = Context.Request.Query["ordem"];
+
+            string controller = ViewContext.RouteData.Values["controller"].ToString();
+            string action = ViewContext.RouteData.Values["action"].ToString();
+
+            if (controller != "Home" && controller != "Produto")
+            {
+                controller = "Home";
+                action = "Index";
+            }
+            if (action != "Index" && action != "ListagemProduto")
+            {
+                action = "Index";
+                controller = "Home";
+            }
+        }
+        <form method="get" class="form-inline my-2 my-lg-0" asp-action="@action" asp-controller="@controller" asp-fragment="titlePage">
+            <input class="form-control mr-sm-2" name="pesquisa" value="@pesquisa" type="search" placeholder="palavra" aria-label="Search">
+            <input type="hidden" name="ordem" value="@ordem" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
+        </form>
+        @{ 
+            Cliente cliente = _loginCliente.BuscaClienteSessao();
+        }
+        @if (cliente != null)
+        {
+            <a class="nav-link" href="/cliente/home/painel"><i class="fas fa-user-alt"></i> @cliente.Nome.Split(" ")[0]</a>
+            <a class="nav-link" href="/cliente/home/logout"><i class="fas fa-power-off"></i> Logout</a>
+        }
+        else
+        {
+            <a class="nav-link" href="/cliente/home/login"><i class="fas fa-user-alt"></i> Login</a>
+        }
+        <a class="nav-link" asp-controller="CarrinhoCompra" asp-action="Index"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+    </div>
+</nav>

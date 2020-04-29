@@ -1,0 +1,92 @@
+﻿@using MultiMarket.Models
+@model MultiMarket.Libraries.Pagination.PaginationEngine<Categoria>
+@{
+    ViewData["Title"] = "Index";
+    string pesquisa = Context.Request.Query["pesquisa"];
+}
+
+<h1>Categoria</h1>
+<form method="get" asp-action="Index">
+    <p>
+        <input type="text" name="pesquisa" id="pesquisa" class="form-control" value="@pesquisa" />
+        <button type="submit" class="btn btn-info">Procurar</button>
+    </p>
+</form>
+<p><a asp-action="Cadastrar" class="btn btn-primary">Cadastrar</a></p>
+@if (Model.Elementos.Count > 0)
+{
+
+    if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    else if (TempData["MSG_E"] != null)
+    {
+        <p class="alert alert-danger">@TempData["MSG_E"]</p>
+    }
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <!--ESSE COMANDO SERVE PARA MOSTRAR O NOME DA PROPRIEDADE DO ELEMENTO CAPTURADO-->
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Id)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Nome)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().CategoriaPaiId)</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MultiMarket.Models.Categoria categoria in Model.Elementos)
+                {
+                    <tr>
+                        <th scope="row">@categoria.Id</th>
+                        <td>@categoria.Nome</td>
+                        <td>@(categoria.CategoriaPaiId == null ? "" : "Cód. " + categoria.CategoriaPaiId.ToString()) - @Html.DisplayFor(a => categoria.CategoriaPai.Nome)</td>
+                        <td>
+                            <a asp-action="Atualizar" asp-route-id="@categoria.Id" class="btn btn-success">Atualizar</a>
+                            <a asp-action="Excluir" asp-route-id="@categoria.Id" id="btnDelete" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+
+    <a asp-action="Index"
+       asp-controller="Categoria"
+       asp-route-pagina=@(Model.PageIndex-1)
+       asp-area="Colaborador"
+       class="btn btn-dark @prevDisabled">
+        Voltar
+    </a>
+    <a asp-action="Index"
+       asp-controller="Categoria"
+       asp-route-pagina=@(Model.PageIndex+1)
+       asp-area="Colaborador"
+       class="btn btn-dark @nextDisabled">
+        Avançar
+    </a>
+}
+else
+{<p>Não há categorias cadastradas</p>}
+
+<!--
+@for (int i = 1; i <=Model.TotalPages; i++)
+{
+    <a asp-action="Index"
+       asp-controller="Categoria"
+       asp-route-pagina=@i
+       asp-area="Colaborador"
+       class="btn btn-dark">
+        @i
+    OBS: Html.DisplayFor(a=>X)
+    onde X é o elemento que verifica se é vazio (evita erros)
+    </a>
+}
+-->

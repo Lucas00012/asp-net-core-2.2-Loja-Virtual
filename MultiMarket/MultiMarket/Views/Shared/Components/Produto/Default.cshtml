@@ -1,0 +1,104 @@
+﻿@using MultiMarket.Models
+@model MultiMarket.Libraries.Pagination.PaginationEngine<Produto>
+@{
+    string pesquisa = Context.Request.Query["pesquisa"];
+    string ordem = Context.Request.Query["ordem"];
+
+    string HasNextPage = Model.HasNextPage ? "" : "disabled";
+    string HasPreviousPage = Model.HasPreviousPage ? "" : "disabled";
+
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewContext.RouteData.Values["action"].ToString();
+}
+@if (TempData["MSG_E"] != null)
+{
+    <div class="container text-center">
+        <p id="error-msg" class="alert alert-danger msg-error">@TempData["MSG_E"]</p>
+    </div>
+}
+else
+{
+    <div class="container text-center">
+        <p id="error-msg" class="alert alert-danger msg-error" style="display:none;"></p>
+    </div>
+}
+@if (Model != null && Model.Elementos.Count() > 0)
+{
+    <h3 id="titlePage" style="text-align:center;margin-bottom:20px;">A sua loja virtual favorita! Os melhores preços estão aqui</h3>
+    <div class="col-sm-4 centralizer">
+        <p>Ordenar por:</p>
+        <select class="form-control" id="order-form">
+            @if (ordem == ">P")
+            {
+                <option value=">P">Maior preço</option>
+                <option value="N">Nome</option>
+                <option value="<P">Menor preço</option>
+            }
+            else if (ordem == "<P")
+            {
+                <option value="<P">Menor preço</option>
+                <option value=">P">Maior preço</option>
+                <option value="N">Nome</option>
+            }
+            else
+            {
+                <option value="N">Nome</option>
+                <option value="<P">Menor preço</option>
+                <option value=">P">Maior preço</option>
+            }
+
+        </select>
+    </div>
+    <div class="container container-central" id="code_prod_complex">
+        <a asp-action="@action"
+           asp-controller="@controller"
+           asp-route-pagina="@(Model.PageIndex - 1)"
+           asp-route-pesquisa="@pesquisa"
+           asp-route-ordem="@ordem"
+           asp-fragment="titlePage"
+           class="btn btn-dark @HasPreviousPage pager">
+            &lt;
+        </a>
+        <div class="row container-products">
+            @foreach (Produto produto in Model.Elementos)
+            {
+                <div class="col-md-4">
+                    <figure class="card card-product">
+                        <a asp-controller="Produto" asp-action="Visualizar" asp-route-id="@produto.Id">
+                            <div class="img-wrap"><img src="@(produto.ImagemProduto.Where(a => a.ProdutoId == produto.Id).Count() == 0 ? "/img/vender-produtos.png" : produto.ImagemProduto.Where(a => a.ProdutoId == produto.Id).ToList()[0].Caminho)"> </div>
+                            <figcaption class="info-wrap">
+                                <h4 class="title">@produto.Nome</h4>
+                                <div class="rating-wrap">
+                                    <ul class="rating-stars">
+                                    </ul>
+                                </div> <!-- rating-wrap.// -->
+                            </figcaption>
+                        </a>
+                        <div class="bottom-wrap">
+                            <input type="hidden" value="@produto.Id" class="produto-id" />
+                            <a class="btn btn-sm btn-primary float-right btn-adiciona" style="color:white;">Adicionar</a>
+                            <div class="price-wrap h5">
+                                <span class="price-new">@produto.Valor.ToString()</span>
+                            </div> <!-- price-wrap.// -->
+                        </div> <!-- bottom-wrap.// -->
+                    </figure>
+                </div> <!-- col // -->
+            }
+        </div> <!-- row.// -->
+        <a asp-action="@action"
+           asp-controller="@controller"
+           asp-route-pagina="@(Model.PageIndex + 1)"
+           asp-route-pesquisa="@pesquisa"
+           asp-route-ordem="@ordem"
+           asp-fragment="titlePage"
+           class="btn btn-dark @HasNextPage pager">
+            >
+        </a>
+    </div>
+}
+else
+{
+    <div class="container">
+        <p class="alert alert-info">Oops! Não temos produtos cadastrados por enquanto. Fique atento as nossas novidades</p>
+    </div>
+}

@@ -1,0 +1,96 @@
+﻿@model MultiMarket.Models.Produto
+@{
+    ViewData["Title"] = "Atualizar";
+}
+
+<h1>Atualizar</h1>
+
+<form method="post" asp-action="Atualizar">
+    @if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label asp-for="Nome">Nome</label>
+            <input type="text" class="form-control" asp-for="Nome" placeholder="Digite o nome">
+            <span asp-validation-for="Nome" style="color:red"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="CategoriaId"></label>
+            <select asp-for="CategoriaId" class="form-control" asp-items="@ViewBag.Categorias">
+                <option value="">Selecione</option>
+            </select>
+            <span asp-validation-for="CategoriaId" style="color:red"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descricao"></label>
+        <textarea asp-for="Descricao" class="form-control" rows="5" placeholder="Digite a descricão">
+        </textarea>
+        <span asp-validation-for="Descricao" style="color:red"></span>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label asp-for="Valor"></label>
+            <input type="text" class="form-control money" asp-for="Valor" placeholder="Digite o valor">
+            <span asp-validation-for="Valor" style="color:red"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="Quantidade"></label>
+            <input type="number" class="form-control" asp-for="Quantidade" placeholder="Digite a quantidade">
+            <span asp-validation-for="Quantidade" style="color:red"></span>
+        </div>
+    </div>
+    <h3>Frete</h3>
+    <div class="row">
+        <div class="form-group col-sm-3">
+            <label asp-for="Peso"></label>
+            <input type="text" class="form-control peso" asp-for="Peso" placeholder="Digite o peso">
+            <span asp-validation-for="Peso" style="color:red"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Largura"></label>
+            <input type="number" class="form-control" asp-for="Largura" placeholder="Digite a largura">
+            <span asp-validation-for="Largura" style="color:red"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Altura"></label>
+            <input type="number" class="form-control" asp-for="Altura" placeholder="Digite a altura">
+            <span asp-validation-for="Altura" style="color:red"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Comprimento"></label>
+            <input type="number" class="form-control" asp-for="Comprimento" placeholder="Digite o comprimento">
+            <span asp-validation-for="Comprimento" style="color:red"></span>
+        </div>
+    </div>
+    <h3>Imagens</h3>
+    <div class="imagens">
+        @for (int i = 0; i < 12; i++)
+        {
+        <div class="imagem">
+            @if (Model.ImagemProduto.Count > i)
+            {
+                <input type="file" class="img-add-file" value="@Model.ImagemProduto[i].Caminho"/>
+                <div class="imgContainer">
+                    <img src="@Model.ImagemProduto[i].Caminho" class="img-thumbnail img-select" />
+                </div>
+                <button type="button" class="btn-imagens btn-danger">X</button>
+                <input type="hidden" value ="@Model.ImagemProduto[i].Caminho" name="imageAddress" />
+            }
+            else
+            {
+                <input type="file" class="img-add-file" />
+                <div class="imgContainer">
+                    <img src="~/img/img-padrao.png" class="img-thumbnail img-select" />
+                </div>
+                <button type="button" disabled="disabled" class="btn-imagens btn-danger btn-red">X</button>
+                <input type="hidden" name="imageAddress" />
+            }
+        </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>

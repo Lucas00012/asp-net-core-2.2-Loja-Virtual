@@ -1,0 +1,56 @@
+﻿@using MultiMarket.Models
+@model List<EnderecoEntrega>
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData["MSG_S"] != null)
+{
+    <br />
+    <br />
+    <div class="container">
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    </div>
+}
+@if (Model.Count > 0)
+{
+
+    <br />
+    <h1 class="text-center">Endereços</h1>
+    <br />
+    <div class="container">
+        <a class="btn btn-primary" asp-action="CadastroEnderecoEntrega">Cadastrar</a>
+        <a class="btn btn-outline-primary" asp-action="Painel" asp-controller="Home">Voltar</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>CEP</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            @foreach (EnderecoEntrega endereco in Model)
+            {
+                <tr>
+                    <td>@endereco.CEP</td>
+                    <td>@endereco.Nome</td>
+                    <td>@endereco.Rua, @((endereco.Complemento == null || endereco.Complemento == "") ? "sem complemento" : endereco.Complemento), @endereco.Bairro, nº @endereco.Numero, @endereco.Cidade, @endereco.Estado</td>
+                    <td>
+                        <a class="btn btn-success" asp-action="Atualizar" asp-route-id="@endereco.Id">Atualizar</a>
+                        <a class="btn btn-danger" asp-action="Excluir" asp-route-id="@endereco.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <br />
+    <br />
+    <div class="container text-center">
+        <a class="btn btn-outline-primary" href="/cliente/home/painel">Voltar</a>
+        <p>Não há endereços de entrega cadastrados!</p>
+        <a asp-action="CadastroEnderecoEntrega" asp-controller="EnderecoEntrega" class="btn btn-outline-primary btn-lg">Cadastrar</a>
+    </div>
+}

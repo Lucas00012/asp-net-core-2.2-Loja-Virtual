@@ -1,0 +1,140 @@
+﻿@using MultiMarket.Libraries.Login
+@inject MultiMarket.Libraries.Login.LoginColaborador LoginColaborador
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
+
+
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/resources/lib/bootstrap-4.2.1-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+    <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/css/Confs.css" />
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @@media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="~/resources/lib/dashboard/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MultiMarket</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" asp-action="Logout" asp-controller="Home">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Home"?"active":"")" asp-action="Painel" asp-controller="Home">
+                                <span data-feather="home"></span>
+                                Painel de controle
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Categoria"?"active":"")" asp-action="Index" asp-controller="Categoria">
+                                <span data-feather="file"></span>
+                                Categorias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Pedido"?"active":"")" asp-action="Index" asp-controller="Pedido">
+                                <span data-feather="file"></span>
+                                Pedidos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Produto"?"active":"")" asp-controller="Produto" asp-action="Index">
+                                <span data-feather="shopping-cart"></span>
+                                Produtos
+                            </a>
+                        </li>
+                        @if (LoginColaborador.BuscaSessaoColaborador() != null && LoginColaborador.BuscaSessaoColaborador().Tipo=="G")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Colaboradores"?"active":"")" asp-controller="Colaboradores" asp-action="Index">
+                                    <span data-feather="users"></span>
+                                    Colaborador
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString()=="Clientes"?"active":"")" asp-controller="Clientes" asp-action="Index">
+                                <span data-feather="users"></span>
+                                Cliente
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+
+                @RenderBody()
+            </main>
+
+        </div>
+    </div>
+    <script src="~/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/resources/lib/jquery3.3.1/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="~/resources/lib/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/resources/lib/feather/feather.js"></script>
+    <script src="~/resources/lib/charts/charts.js"></script>
+    <script src="~/resources/lib/dashboard/dashboard.js"></script>
+    <script src="~/resources/lib/mask/jquery.mask.min.js"></script>
+    <script src="~/js/Actions.js"></script>
+
+    @RenderSection("script", false);
+</body>
+</html>
+

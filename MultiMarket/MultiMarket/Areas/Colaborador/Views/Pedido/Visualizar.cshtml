@@ -1,0 +1,481 @@
+﻿@using MultiMarket.Models
+@using MultiMarket.Models.ProdutoAgregador
+@using MultiMarket.Models.ViewModel
+@using MultiMarket.Libraries.Json
+@using Newtonsoft.Json
+@model PedidoVisualizacaoViewModel
+@{
+    ViewData["Title"] = "Visualizar";
+
+    TransacaoPagarMe transacao = JsonConvert.DeserializeObject<TransacaoPagarMe>(Model.pedido.DadosTransaction);
+    List<ProdutoItem> produtos = JsonConvert.DeserializeObject<List<ProdutoItem>>(Model.pedido.DadosProdutos, new JsonSerializerSettings
+    {
+        ContractResolver = new UndoJsonIgnore<List<ProdutoItem>>(),
+    });
+}
+
+
+    <div class="text-center container">
+        <br />
+        <br />
+        <h1>Pedido nº @Model.pedido.Id-@Model.pedido.TransactionId</h1>
+        @await Component.InvokeAsync("Status", new { pedido = Model.pedido })
+        <br />
+        @if (TempData["MSG_E"] != null)
+        {
+            <div class="container text-center">
+                <p class="alert alert-danger">@TempData["MSG_E"]</p>
+            </div>
+        }
+        <h3>Dados do pedido</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td colspan="2">
+                    <strong>Situação do pedido:</strong>
+                    @Model.pedido.Situacao
+                    @if (Model.pedido.Situacao == PedidoSituacaoConstant.PAGAMENTO_APROVADO)
+                    {
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalNFE">
+                            Anexar NFE emitida
+                        </a>
+                    }
+                    else if (Model.pedido.Situacao == PedidoSituacaoConstant.NF_EMITIDA)
+                    {
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalCodRastreamento">
+                            Anexar cód. rastreamento
+                        </a>
+                    }
+                    @if (Model.pedido.Situacao == PedidoSituacaoConstant.NF_EMITIDA || Model.pedido.Situacao == PedidoSituacaoConstant.PAGAMENTO_APROVADO)
+                    {
+                        @if (Model.pedido.FormaPagamento == TipoPagamentoConstant.BOLETO)
+                        {
+                            <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalBoleto">
+                                Cancelar compra
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalCartao">
+                                Cancelar compra
+                            </a>
+                        }
+                    }
+                    @if (Model.pedido.Situacao == PedidoSituacaoConstant.ENTREGUE)
+                    {
+                        var pedidoSituacao = Model.pedido.PedidoSituacoes.FirstOrDefault(a => a.Situacao == PedidoSituacaoConstant.ENTREGUE);
+                        if (pedidoSituacao != null && DateTime.Now <= pedidoSituacao.Data.AddDays(7))
+                        {
+                            <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalDevolver">
+                                Devolver
+                            </a>
+                        }
+                    }
+                    else if (Model.pedido.Situacao == PedidoSituacaoConstant.DEVOLVER_ENTREGUE)
+                    {
+                        if (Model.pedido.FormaPagamento == TipoPagamentoConstant.BOLETO)
+                        {
+                            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalBoletoDevolucao">
+                                Aprovar devolução
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="AprovarDevolucaoCartao" class="btn btn-success" data-toggle="modal" data-target="#modalBoletoDevolucao">
+                                Aprovar devolução
+                            </a>
+                        }
+                        <a href="" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalRejeitar">
+                            Rejeitar devolução
+                        </a>
+                    }
+                </td>
+
+            </tr>
+            <tr>
+                <td><strong>Cliente:</strong> @transacao.Customer.Name</td>
+                <td><strong>Nascimento:</strong> @transacao.Customer.Birthday</td>
+            </tr>
+            <tr>
+                <td><strong>Forma de pagamento: </strong>@Model.pedido.FormaPagamento</td>
+                <td>
+                    <strong>Nota Fiscal Eletrônica: </strong>
+                    @if (Model.pedido.NFE != null)
+                    {
+                        <a target="_blank" href="@Model.pedido.NFE">Nota fiscal eletrônica</a>
+                    }
+                    else
+                    {
+                        <span>Não emitida</span>
+                    }
+                </td>
+            </tr>
+        </table>
+        @if (Model.pedido.Situacao == PedidoSituacaoConstant.DEVOLVER_ENTREGUE)
+        {
+            var pedidoSituacao = Model.pedido.PedidoSituacoes.Where(a => a.Situacao == PedidoSituacaoConstant.DEVOLVER).FirstOrDefault();
+            var devolucao = JsonConvert.DeserializeObject<DadosDevolucao>(pedidoSituacao.Dados);
+            var pedidoEntrega = Model.pedido.PedidoSituacoes.Where(a => a.Situacao == PedidoSituacaoConstant.DEVOLVER_ENTREGUE).First();
+            if (pedidoSituacao != null)
+            {
+                <h3>Devolução - Dados</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td><strong>Transportadora: </strong>@Model.pedido.FreteEmpresa</td>
+                        <td><strong>Rastreamento: </strong>@devolucao.CodRastreamento</td>
+                        <td><strong>Data de entrega: </strong>@pedidoEntrega.Data</td>
+                    </tr>
+                </table>
+            }
+        }
+        <h3>Entrega</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td colspan="4">
+                    <strong>Endereço de entrega: </strong>@transacao.Shipping.Name
+                </td>
+            </tr>
+            <tr>
+                <td><strong>CEP:</strong> @transacao.Shipping.Address.Zipcode</td>
+                <td><strong>Estado:</strong> @transacao.Shipping.Address.State</td>
+                <td><strong>Cidade:</strong> @transacao.Shipping.Address.City</td>
+                <td><strong>Bairro:</strong> @transacao.Shipping.Address.Neighborhood</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Endereço: </strong> @transacao.Shipping.Address.Street</td>
+                <td><strong>Complemento: </strong>@transacao.Shipping.Address.Complementary</td>
+                <td><strong>Número: </strong>@transacao.Shipping.Address.StreetNumber</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Transportadora:</strong> @Model.pedido.FreteEmpresa</td>
+                <td><strong>Valor do frete:</strong> @(((decimal)transacao.Shipping.Fee / 100).ToString("C"))</td>
+                <td>
+                    <strong>Rastreamento: </strong>
+                    @if (Model.pedido.FreteCodRastreamento != null)
+                    {
+                        @Model.pedido.FreteCodRastreamento
+                    }
+                    else
+                    {
+                        <span>Não emitido</span>
+                    }
+                </td>
+            </tr>
+        </table>
+        <h3>Lista de produtos</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Quantidade</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>TOTAL</th>
+            </tr>
+
+            @foreach (var produto in produtos)
+            {
+                <tr>
+                    <td>@produto.QuantidadeCarrinhoProduto</td>
+                    <td>@produto.Nome</td>
+                    <td>@(((decimal)produto.Valor).ToString("C"))</td>
+                    <td>@((((decimal)produto.Valor) * produto.QuantidadeCarrinhoProduto).ToString("C"))</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="3"><strong>FRETE</strong></td>
+                <td>@(((decimal)transacao.Shipping.Fee / 100).ToString("C"))</td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>TOTAL</strong></td>
+                <td>@Model.pedido.ValorTotal.ToString("C")</td>
+            </tr>
+        </table>
+
+        <br />
+        <br />
+        <button class="btn btn-outline-primary btn-lg" id="btn-imprimir">Imprimir</button>
+    </div>
+
+<form method="post" asp-action="NFE" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+    <div class="modal" tabindex="-1" role="dialog" id="modalNFE">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Anexar NFE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="NFE">Nota fiscal eletrônica</label>
+                        <input type="text" asp-for="NFE" class="form-control" />
+                        <span asp-validation-for="NFE" class="erro"></span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<form method="post" asp-action="CodRastreamento" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+    <div class="modal" tabindex="-1" role="dialog" id="modalCodRastreamento">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Anexar Cód. Rastreamento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="CodRastreamento">Código de rastreamento</label>
+                        <input type="text" asp-for="CodRastreamento" class="form-control" />
+                        <span asp-validation-for="CodRastreamento" class="erro"></span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-action="CancelarCartaoCompra" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+    <div class="modal" tabindex="-1" role="dialog" id="modalCartao">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estornar compra - CARTÃO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="estornoCartao.Motivo">Motivo</label>
+                        <textarea class="form-control" asp-for="estornoCartao.Motivo"></textarea>
+                        <span asp-validation-for="estornoCartao.Motivo" class="erro"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-action="CancelarBoletoCompra" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+
+    <div class="modal" tabindex="-1" role="dialog" id="modalBoleto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estornar compra - BOLETO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Motivo">Código do banco</label>
+                        <input type="text" asp-for="estornoBoleto.BancoCodigo" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.BancoCodigo" class="erro"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="estornoBoleto.Agencia">Agência</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.Agencia">
+                            <span asp-validation-for="estornoBoleto.Agencia" class="erro"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="estornoBoleto.AgenciaDV">DÍGITO</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.AgenciaDV">
+                            <span asp-validation-for="estornoBoleto.AgenciaDV" class="erro"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="estornoBoleto.Conta">Conta</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.Conta">
+                            <span asp-validation-for="estornoBoleto.Conta" class="erro"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="estornoBoleto.ContaDV">DÍGITO</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.ContaDV">
+                            <span asp-validation-for="estornoBoleto.ContaDV" class="erro"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">CPF</label>
+                        <input type="text" asp-for="estornoBoleto.CPF" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.CPF" class="erro"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">Nome do proprietário da conta</label>
+                        <input type="text" asp-for="estornoBoleto.Nome" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.Nome" class="erro"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">Motivo</label>
+                        <textarea class="form-control" asp-for="estornoBoleto.Motivo"></textarea>
+                        <span asp-validation-for="estornoBoleto.Motivo" class="erro"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-action="DevolucaoPedido" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+    <div class="modal" tabindex="-1" role="dialog" id="modalDevolver">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Devolução do pedido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Devolucao.Motivo">Motivo</label>
+                        <textarea class="form-control" asp-for="Devolucao.Motivo"></textarea>
+                        <span asp-validation-for="Devolucao.Motivo" class="erro"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Devolucao.CodRastreamento">Cód. de rastreamento</label>
+                        <input type="text" class="form-control" asp-for="Devolucao.CodRastreamento"/>
+                        <span asp-validation-for="Devolucao.CodRastreamento" class="erro"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-action="RejeitarDevolucao" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+    <div class="modal" tabindex="-1" role="dialog" id="modalRejeitar">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Rejeitar devolução</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="RejeitarDevolucao.Motivo">Motivo</label>
+                        <textarea class="form-control" asp-for="RejeitarDevolucao.Motivo"></textarea>
+                        <span asp-validation-for="RejeitarDevolucao.Motivo" class="erro"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form method="post" asp-action="AprovarDevolucaoBoleto" asp-controller="Pedido" asp-route-id="@Model.pedido.Id">
+
+    <div class="modal" tabindex="-1" role="dialog" id="modalBoletoDevolucao">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aprovar devolução - BOLETO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="Motivo">Código do banco</label>
+                        <input type="text" asp-for="estornoBoleto.BancoCodigo" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.BancoCodigo" class="erro"></span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="estornoBoleto.Agencia">Agência</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.Agencia">
+                            <span asp-validation-for="estornoBoleto.Agencia" class="erro"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="estornoBoleto.AgenciaDV">DÍGITO</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.AgenciaDV">
+                            <span asp-validation-for="estornoBoleto.AgenciaDV" class="erro"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="estornoBoleto.Conta">Conta</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.Conta">
+                            <span asp-validation-for="estornoBoleto.Conta" class="erro"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="estornoBoleto.ContaDV">DÍGITO</label>
+                            <input type="text" class="form-control" asp-for="estornoBoleto.ContaDV">
+                            <span asp-validation-for="estornoBoleto.ContaDV" class="erro"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">CPF</label>
+                        <input type="text" asp-for="estornoBoleto.CPF" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.CPF" class="erro"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">Nome do proprietário da conta</label>
+                        <input type="text" asp-for="estornoBoleto.Nome" class="form-control" />
+                        <span asp-validation-for="estornoBoleto.Nome" class="erro"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Motivo">Motivo</label>
+                        <textarea class="form-control" asp-for="estornoBoleto.Motivo"></textarea>
+                        <span asp-validation-for="estornoBoleto.Motivo" class="erro"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    var botao = document.getElementById("btn-imprimir");
+    botao.addEventListener("click", function () { window.print(); })
+</script>
+
+@section script{
+    @if (ViewBag.MODAL_ID != null)
+    {
+        <script type="text/javascript">
+            $("@ViewBag.MODAL_ID").modal("show");
+        </script>
+    }
+}

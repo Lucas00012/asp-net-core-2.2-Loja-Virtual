@@ -1,0 +1,42 @@
+﻿@model MultiMarket.Models.Cliente
+@{
+    ViewData["Title"] = "Atualizar";
+}
+
+<form asp-action="AtualizarSenha" asp-controller="Cliente" method="post">
+    <main role="main">
+        <section class="container" style="margin-top: 50px">
+            <div class="row">
+                <aside class="col-sm-6">
+                    <a class="btn btn-outline-primary" asp-action="Painel" asp-controller="Home">Voltar</a>
+                    <h3 class="subtitle-doc">
+                        Atualizar senha
+                    </h3>
+                    <div id="code_register_1">
+                        <div class="card">
+                            <article class="card-body">
+                                <div class="form-group">
+                                    <label asp-for="Senha">Senha</label>
+                                    <input class="form-control" asp-for="Senha" type="password">
+                                    <span asp-validation-for="Senha" class="erro"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConfirmacaoSenha"></label>
+                                    <input class="form-control" asp-for="ConfirmacaoSenha" type="password">
+                                    <span asp-validation-for="ConfirmacaoSenha" class="erro"></span>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+                                </div> <!-- form-group// -->
+                            </article> <!-- card-body end .// -->
+                        </div> <!-- card.// -->
+
+                    </div> <!-- code-wrap.// -->
+                </aside>
+            </div>
+        </section>
+    </main>
+</form>
+
+
+

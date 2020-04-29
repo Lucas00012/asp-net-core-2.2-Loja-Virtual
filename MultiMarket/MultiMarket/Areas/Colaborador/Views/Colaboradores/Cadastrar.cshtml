@@ -1,0 +1,32 @@
+﻿@model MultiMarket.Models.Colaborador
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+
+<form method="post" asp-action="Cadastrar">
+    @if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    @if (TempData["MSG_E"] != null)
+    {
+        <p class="alert alert-danger">@TempData["MSG_S"]</p>
+    }
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input type="text" class="form-control" asp-for="Nome" placeholder="Digite o nome do colaborador">
+        <span asp-validation-for="Nome" style="color:red"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input type="text" class="form-control" asp-for="Email" placeholder="Digite e-mail">
+        <span asp-validation-for="Email" style="color:red"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>
+
+

@@ -1,0 +1,163 @@
+﻿@using MultiMarket.Libraries.Pagination
+@using MultiMarket.Models
+@model PaginationEngine<EnderecoEntrega>
+@{
+    ViewData["Title"] = "EnderecoEntrega";
+
+    string prevDisabled = Model.HasPreviousPage ? "" : "disabled";
+    string nextDisabled = Model.HasNextPage ? "" : "disabled";
+
+    string pesquisa = Context.Request.Query["pesquisa"];
+
+    decimal? total=0;
+
+    foreach(var produto in ViewBag.Produtos)
+    {
+        total += produto.Valor * produto.QuantidadeCarrinhoProduto;
+    }
+}
+
+    <div class="container">
+        <br />
+        <br />
+        <form method="get" asp-action="EnderecoEntrega" asp-controller="CarrinhoCompra">
+            <div class="row">
+                <input type="text" name="pesquisa" class="form-control" value="@pesquisa" />
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </div>
+        </form>
+        @if (Model.Elementos.Count() > 0)
+        {
+            <br />
+            <h2>Selecione o endereço</h2>
+            <br />
+            <table class="table table-borderless" style="width:100% !important;">
+                <thead>
+                    <tr>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Endereço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EnderecoEntrega endereco in Model.Elementos)
+                    {
+                        <tr>
+                            <td scope="row">
+                                <div class="custom-control custom-radio">
+                                    <input type="hidden" value="@endereco.CEP" />
+                                    @if (ViewBag.CEP != null && endereco.CEP.Replace("-", "") == ViewBag.CEP)
+                                    {
+                                        <input type="radio" id="end-@endereco.Id" checked name="endereco" class="custom-control-input" value="@endereco.Id">
+                                    }
+                                    else
+                                    {
+                                        <input type="radio" id="end-@endereco.Id" name="endereco" class="custom-control-input" value="@endereco.Id">
+                                    }
+                                    <label class="custom-control-label" for="end-@endereco.Id">   @endereco.CEP</label>
+                                </div>
+                            </td>
+                            <td>@endereco.Nome</td>
+                            <td>@endereco.Rua, @((endereco.Complemento == null || endereco.Complemento == "") ? "sem complemento" : endereco.Complemento), @endereco.Bairro, nº @endereco.Numero, @endereco.Cidade, @endereco.Estado</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a asp-action="EnderecoEntrega"
+               asp-controller="CarrinhoCompra"
+               asp-route-pagina=@(Model.PageIndex-1)
+               asp-route-pesquisa=@pesquisa
+               class="btn btn-dark @prevDisabled">
+                Voltar
+            </a>
+            <a asp-action="EnderecoEntrega"
+               asp-controller="CarrinhoCompra"
+               asp-route-pagina=@(Model.PageIndex+1)
+               asp-route-pesquisa=@pesquisa
+               class="btn btn-dark @nextDisabled">
+                Avançar
+            </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a class="btn btn-outline-primary" href="/cliente/home/CadastroEnderecoEntrega">Cadastrar endereço</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" style="justify-content:space-between !important">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/img/pac.png" class="card-img-top img-PAC" alt="...">
+                    <div class="card-body">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="PAC" value="PAC" name="tipoFrete" disabled class="custom-control-input">
+                            <label class="custom-control-label" for="PAC">PAC</label>
+                        </div>
+                        <br />
+                        <p class="card-text prazo-PAC"><strong>Prazo:</strong> Indisponível</p>
+                        <p class="card-text valor-PAC"><strong>Valor:</strong> Indisponível</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="~/img/sedex.jpg" class="card-img-top img-SEDEX" alt="...">
+                    <div class="card-body">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="SEDEX" value="SEDEX" disabled name="tipoFrete" class="custom-control-input">
+                            <label class="custom-control-label" for="SEDEX">SEDEX</label>
+                        </div>
+                        <br />
+                        <p class="card-text prazo-SEDEX"><strong>Prazo:</strong> Indisponível</p>
+                        <p class="card-text valor-SEDEX"><strong>Valor:</strong> Indisponível</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="~/img/sedex10.png" class="card-img-top img-SEDEX10" alt="...">
+                    <div class="card-body">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="SEDEX10" value="SEDEX10" disabled name="tipoFrete" class="custom-control-input">
+                            <label class="custom-control-label" for="SEDEX10">SEDEX10</label>
+                        </div>
+                        <br />
+                        <p class="card-text prazo-SEDEX10"><strong>Prazo:</strong> Indisponível</p>
+                        <p class="card-text valor-SEDEX10"><strong>Valor:</strong> Indisponível</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <hr style="background-color:#ccc" />
+            <div class="central">
+                <div>
+                    <strong>Produto: </strong>
+                    <span class="prod-valor">R$ @total.ToString()</span>
+                </div>
+                <div>
+                    <strong>Frete: </strong>
+                    <span class="frete-valor">Indisponível</span>
+                </div>
+                <div>
+                    <strong>Total: </strong>
+                    <span class="tot-valor">Indisponível</span>
+                </div>
+            </div>
+            <hr style="background-color:#ccc" />
+            <br />
+            <div style="text-align:center">
+                <a class="btn btn-primary botaoBolado" asp-controller="Pagamento" asp-action="Index">Continuar</a>
+            </div>
+            <div class="msg-erro" style="text-align:center;display:none;">
+                <p class="alert alert-danger"></p>
+            </div>
+        }
+        else
+        {
+            <br />
+            <br />
+            <p>Não há endereços cadastrados!</p>
+            <br />
+            <br />
+            <div class="text-center">
+                <a class="btn btn-outline-primary" href="/cliente/home/CadastroEnderecoEntrega">Cadastrar endereço</a>
+            </div>
+        }
+    </div>
+<script src="~/js/ActionsEndereco.js"></script>

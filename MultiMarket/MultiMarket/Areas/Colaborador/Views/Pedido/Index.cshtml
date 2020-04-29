@@ -1,0 +1,69 @@
+﻿@using MultiMarket.Libraries.Pagination
+@using MultiMarket.Models
+@model PaginationEngine<Pedido>
+@{
+    ViewData["Title"] = "Index";
+    string pesquisa = Context.Request.Query["pesquisa"];
+}
+<br />
+<h1 class="text-center">Lista de pedidos</h1>
+<br />
+<form method="get" asp-action="Index" asp-controller="Pedido">
+    <input class="form-control" type="text" name="pesquisa" value="@pesquisa" placeholder="Nº do pedido ou CPF(somente números)" />
+    <button class="btn btn-primary" type="submit">Pesquisar</button>
+</form>
+@if (Model.Elementos.Count() > 0)
+{
+    <br />
+    <div class="container">
+        <br />
+        <br />
+        <a class="btn btn-outline-primary" href="/cliente/home/painel">Voltar</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nº do pedido</th>
+                    <th>CPF</th>
+                    <th>Pagamento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            @foreach (Pedido pedido in Model.Elementos)
+            {
+                <tr>
+                    <td>@pedido.Id-@pedido.TransactionId</td>
+                    <td>@pedido.Cliente.CPF</td>
+                    <td>@pedido.FormaPagamento</td>
+                    <td>@pedido.Situacao</td>
+                    <td>
+                        <a asp-action="Visualizar" asp-route-id="@pedido.Id" class="btn btn-success">Visualizar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        @{
+            string HasNextPage = Model.HasNextPage ? "" : "disabled";
+            string HasPreviousPage = Model.HasPreviousPage ? "" : "disabled";
+        }
+        <a asp-action="Index"
+           asp-route-pagina="@(Model.PageIndex-1)"
+           asp-route-pesquisa="@pesquisa"
+           class="btn btn-dark @HasPreviousPage">Voltar</a>
+        <a asp-action="Index"
+           asp-route-pagina="@(Model.PageIndex+1)"
+           asp-route-pesquisa="@pesquisa"
+           class="btn btn-dark @HasNextPage">Avançar</a>
+    </div>
+}
+else
+{
+    <br />
+    <br />
+    <div class="container text-center">
+        <p>Não foi encontrado registros!</p>
+    </div>
+}
+
+
+

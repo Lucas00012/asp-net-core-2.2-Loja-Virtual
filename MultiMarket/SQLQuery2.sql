@@ -1,0 +1,3 @@
+﻿ALTER TABLE Clientes
+ADD CONSTRAINT df_Clientes
+DEFAULT 'A' FOR Status

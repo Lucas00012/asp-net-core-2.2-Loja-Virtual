@@ -1,0 +1,80 @@
+﻿@using MultiMarket.Models
+@model MultiMarket.Libraries.Pagination.PaginationEngine<Cliente>
+@{
+    ViewData["Title"] = "Index";
+    string pesquisa = Context.Request.Query["pesquisa"];
+}
+
+<h1>Cliente</h1>
+<form method="get" asp-action="Index">
+    <p>
+        <input type="text" name="pesquisa" id="pesquisa" class="form-control" value="@pesquisa" />
+        <button type="submit" class="btn btn-info">Procurar</button>
+    </p>
+</form>
+@if (Model.Elementos.Count > 0)
+{
+
+    if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <!--ESSE COMANDO SERVE PARA MOSTRAR O NOME DA PROPRIEDADE DO ELEMENTO CAPTURADO-->
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Id)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Nome)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Email)</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MultiMarket.Models.Cliente cliente in Model.Elementos)
+                {
+                    <tr>
+                        <th scope="row">@cliente.Id</th>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Email</td>
+                        <td>
+                            @if (cliente.Status == "A")
+                            {
+                                <a asp-action="AtivarDesativar" asp-route-id="@cliente.Id" class="btn btn-danger">Desativar</a>
+                            }
+                            else
+                            {
+                                <a asp-action="AtivarDesativar" asp-route-id="@cliente.Id" class="btn btn-success">Ativar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+
+    <a asp-action="Index"
+       asp-controller="Clientes"
+       asp-route-pagina=@(Model.PageIndex-1)
+       asp-route-pesquisa="@pesquisa"
+       asp-area="Colaborador"
+       class="btn btn-dark @prevDisabled">
+        Voltar
+    </a>
+    <a asp-action="Index"
+       asp-controller="Clientes"
+       asp-route-pagina=@(Model.PageIndex+1)
+       asp-route-pesquisa="@pesquisa"
+       asp-area="Colaborador"
+       class="btn btn-dark @nextDisabled">
+        Avançar
+    </a>
+}
+else
+{<p>Não há registros cadastrados!</p>}

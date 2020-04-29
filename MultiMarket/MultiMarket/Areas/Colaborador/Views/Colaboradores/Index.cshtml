@@ -1,0 +1,78 @@
+﻿@using MultiMarket.Models
+@model MultiMarket.Libraries.Pagination.PaginationEngine<Colaborador>
+@{
+    ViewData["Title"] = "Index";
+    string pesquisa = Context.Request.Query["pesquisa"];
+}
+
+<h1>Colaborador</h1>
+<form method="get" asp-action="Index">
+    <p>
+        <input type="text" name="pesquisa" id="pesquisa" class="form-control" value="@pesquisa" />
+        <button type="submit" class="btn btn-info">Procurar</button>
+    </p>
+</form>
+<p><a asp-action="Cadastrar" class="btn btn-primary">Cadastrar</a></p>
+@if (Model.Elementos.Count > 0)
+{
+
+    if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    @if (TempData["MSG_E"] != null)
+    {
+        <p class="alert alert-danger">@TempData["MSG_S"]</p>
+    }
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <!--ESSE COMANDO SERVE PARA MOSTRAR O NOME DA PROPRIEDADE DO ELEMENTO CAPTURADO-->
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Id)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Nome)</th>
+                    <th scope="col">@Html.DisplayNameFor(A => A.Elementos.First().Email)</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MultiMarket.Models.Colaborador colaborador in Model.Elementos)
+                {
+                    <tr>
+                        <th scope="row">@colaborador.Id</th>
+                        <td>@colaborador.Nome</td>
+                        <td>@colaborador.Email</td>
+                        <td>
+                            <a asp-action="GerarSenha" asp-route-id="@colaborador.Id" class="btn btn-info">Gerar senha</a>
+                            <a asp-action="Atualizar" asp-route-id="@colaborador.Id" class="btn btn-success">Atualizar</a>
+                            <a asp-action="Excluir" asp-route-id="@colaborador.Id" id="btnDelete" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+
+    <a asp-action="Index"
+       asp-controller="Categoria"
+       asp-route-pagina=@(Model.PageIndex-1)
+       asp-area="Colaborador"
+       class="btn btn-dark @prevDisabled">
+        Voltar
+    </a>
+    <a asp-action="Index"
+       asp-controller="Categoria"
+       asp-route-pagina=@(Model.PageIndex+1)
+       asp-area="Colaborador"
+       class="btn btn-dark @nextDisabled">
+        Avançar
+    </a>
+}
+else
+{<p>Não há registros cadastrados!</p>}

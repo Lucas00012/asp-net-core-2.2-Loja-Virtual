@@ -1,0 +1,49 @@
+﻿@model MultiMarket.Models.Categoria
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+
+<form method="post" asp-action="Cadastrar">
+    @if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input type="text" class="form-control" asp-for="Nome" placeholder="Digite o nome da categoria">
+        <span asp-validation-for="Nome" style="color:red"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Slug"></label>
+        <input type="text" class="form-control" asp-for="Slug" readonly>
+        <span asp-validation-for="Slug" style="color:red"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoriaPaiId"></label>
+        <select asp-for="CategoriaPaiId" type="text" class="form-control" asp-items="@ViewBag.Categorias">
+            <option value="">Selecione</option>
+        </select>
+        <span asp-validation-for="CategoriaPaiId" style="color:red"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-info">Voltar</a>
+</form>
+
+@section script{
+    <script>
+        $("#Nome").on("keyup change focus", function () {
+            var slug = $("#Slug");
+            slug.val(convertToSlug($(this).val()));
+        })
+        function convertToSlug(Text) {
+            return Text
+                .toLowerCase()
+                .replace(/ /g, '-')
+                .replace(/[^\w-]+/g, '')
+                ;
+        }
+    </script>
+}

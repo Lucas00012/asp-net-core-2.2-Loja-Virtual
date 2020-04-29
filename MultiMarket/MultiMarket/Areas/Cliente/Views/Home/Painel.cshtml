@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Painel";
+}
+<br />
+<br />
+<div class="text-center">
+    <h1>Painel</h1>
+</div>
+@if (TempData["MSG_S"] != null)
+{
+    <br />
+    <div class="container">
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    </div>
+}
+<br />
+<div class="container container-central">
+    <div class="card" style="width: 18rem;">
+        <div class="imgContainer2">
+            <img src="~/img/endereco.png" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Endereços</h5>
+            <div style="height:80px">
+                <p class="card-text">Clique aqui para visualizar, cadastrar, excluir e atualizar seus endereços de entrega</p>
+            </div>
+                <a asp-action="Index" asp-controller="EnderecoEntrega" class="btn btn-primary">Avançar</a>
+            </div>
+        </div>
+    <div class="card" style="width: 18rem;">
+        <div class="imgContainer2">
+            <img src="~/img/user.png" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Meus dados</h5>
+            <div style="height:80px">
+                <p class="card-text">Clique aqui para editar seus dados pessoais</p>
+            </div>
+            <a asp-action="AtualizarDados" asp-controller="Cliente" class="btn btn-primary">Avançar</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="imgContainer2">
+            <img src="~/img/password.png" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Rendefinir senha</h5>
+            <div style="height:80px">
+                <p class="card-text">Clique aqui para rendefinir sua senha de acesso</p>
+            </div>
+                <a asp-action="AtualizarSenha" asp-controller="Cliente" class="btn btn-primary">Avançar</a>
+            </div>
+        </div>
+    <div class="card" style="width: 18rem;">
+        <div class="imgContainer2">
+            <img src="~/img/delivery.png" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Pedidos</h5>
+            <div style="height:80px">
+                <p class="card-text">Clique aqui acompanhar seus pedidos</p>
+            </div>
+                <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Avançar</a>
+            </div>
+        </div>
+</div>
+

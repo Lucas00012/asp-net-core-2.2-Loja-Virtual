@@ -1,0 +1,36 @@
+﻿@using MultiMarket.Models
+@model List<PedidoStatus>
+
+@if (Model != null)
+{
+    <link rel="stylesheet" type="text/css" href="~/css/ProgressBar.css" />
+    <br />
+    <br />
+    <div class="container">
+        <ul class="txt-progress">
+            @foreach (PedidoStatus status in Model)
+            {
+                @if (status.Existe)
+                {
+                    <li class="">@status.Data</li>
+                }
+                else
+                {
+                    <li class=""></li>
+                }
+            }
+        </ul>
+        <ul class="bar">
+            @foreach (PedidoStatus status in Model)
+            {
+                <li class="elemento @(status.Existe?"ativo":"") @(status.Cor)"></li>
+            }
+        </ul>
+        <ul class="txt-progress">
+            @foreach (PedidoStatus status in Model)
+            {
+                <li class="">@status.Status</li>
+            }
+        </ul>
+    </div>
+}

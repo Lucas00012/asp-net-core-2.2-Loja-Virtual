@@ -1,0 +1,232 @@
+﻿@charset"UTF-8";
+.sombra{
+    font-family:Arial;
+}
+
+.centralizer{
+    margin:auto;
+    margin-bottom:30px;
+    margin-top:50px;
+}
+.qtd-produto{
+    text-align:center;
+}
+
+.botaoBolado{
+    width:80% !important;
+}
+
+.pedido-continuar,.btn-compra{
+    width:160px;
+    height:90px;
+    font-size:20px !important;
+    display:flex !important;
+    justify-content:center;
+    align-items:center;
+    margin-top:35px;
+}
+.btn-compra{
+    margin:auto;
+    width:200px !important;
+}
+.naosei2{
+    display:flex;
+    justify-content:flex-end;
+    margin:auto;
+}
+
+.central{
+    margin:auto;
+    width:500px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.fix{
+    display:flex;
+    justify-content:space-between;
+}
+.naosei{
+    justify-content:space-between;
+    margin:auto !important;
+}
+.table-borderless{
+    width:350px !important;
+    font-family:Arial;
+}
+.table-borderless>caption {
+    caption-side:top;
+    font-weight:bold;
+    font-size:15pt;
+}
+.container-products{
+    display:flex;
+    justify-content:center;
+    width:100%;
+}
+.container-central{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.pager{
+    width:50px;
+    height:50px;
+    text-align:center;
+    font-size:25pt !important;
+    line-height:30px !important;
+    margin:20px;
+}
+
+.oi{
+    margin-bottom:0px;
+    text-align:center;
+    margin-top:50px;
+}
+input.st{
+    width: 300px;
+    outline: none;
+}
+span.erro{
+    color:red;
+}
+
+.imagens{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:20px;
+}
+.btn-imagens {
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    cursor: pointer;
+    border: none;
+    height: 30px;
+    font-weight: bold;
+    font-family: Arial;
+}
+.btn-imagens:focus {
+    outline: 0;
+}
+
+.imagem {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 160px;
+}
+.fixer{
+    padding:20px;
+}
+.img-add-file{
+    display:none;
+}
+.img-select{
+    cursor:pointer;
+    border:none;
+}
+.imgContainer {
+    height: 160px;
+    border: 1px solid #DCDCDC;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+.imgContainer2{
+    height:320px;
+    display:flex;
+    align-items:center;
+}
+.btn-red {
+    background-color: #FFC0CB !important;
+    color: white;
+    cursor:default;
+}
+.newsletter{
+    display:flex;
+    justify-content:center;
+}
+
+
+
+/* DROPDOWN MENU BOOTSTRAP 4 */
+
+
+.dropdown-submenu {
+position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.dropdown-menu > li > a{
+    color:black;
+    padding:15px;
+}
+.dropdown-menu {
+    padding-top:10px;
+    width:180px;
+}
+.dropdown-menu>li{
+    margin-bottom:10px;
+}
+.adjust{
+    margin-top:10px;
+}
+.dropdown-menu:first-child{
+    margin-top:10px;
+}
+.father {
+    color: #6495ED !important;
+    font-weight:600;
+}

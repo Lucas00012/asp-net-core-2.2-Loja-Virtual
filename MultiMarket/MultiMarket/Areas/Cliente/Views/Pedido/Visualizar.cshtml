@@ -1,0 +1,115 @@
+﻿@using MultiMarket.Models
+@using MultiMarket.Models.ProdutoAgregador
+@using MultiMarket.Libraries.Json
+@using Newtonsoft.Json
+@model Pedido
+@{
+    ViewData["Title"] = "Visualizar";
+
+    TransacaoPagarMe transacao = JsonConvert.DeserializeObject<TransacaoPagarMe>( Model.DadosTransaction);
+    List<ProdutoItem> produtos = JsonConvert.DeserializeObject<List<ProdutoItem>>(Model.DadosProdutos,new JsonSerializerSettings { 
+        ContractResolver=new UndoJsonIgnore<List<ProdutoItem>>(),
+    });
+}
+    <div class="text-center container">
+        <br />
+        <br />
+        <h1>Pedido nº @Model.Id-@Model.TransactionId</h1>
+        @await Component.InvokeAsync("Status", new { pedido = Model })
+        <br />
+        <h3>Dados do pedido</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td colspan="2"><strong>Situação do pedido:</strong> @Model.Situacao</td>
+
+            </tr>
+            <tr>
+                <td><strong>Cliente:</strong> @transacao.Customer.Name</td>
+                <td><strong>Nascimento:</strong> @transacao.Customer.Birthday</td>
+            </tr>
+            <tr>
+                <td><strong>Forma de pagamento: </strong>@Model.FormaPagamento</td>
+                <td>
+                    <strong>Nota Fiscal Eletrônica: </strong>
+                    @if (Model.NFE != null)
+                    {
+                        <a href="@Model.NFE">Nota fiscal eletrônica</a>
+                    }
+                    else
+                    {
+                        <span>Não emitida</span>
+                    }
+                </td>
+            </tr>
+        </table>
+        <h3>Entrega</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td colspan="4">
+                    <strong>Endereço de entrega: </strong>@transacao.Shipping.Name
+                </td>
+            </tr>
+            <tr>
+                <td><strong>CEP:</strong> @transacao.Shipping.Address.Zipcode</td>
+                <td><strong>Estado:</strong> @transacao.Shipping.Address.State</td>
+                <td><strong>Cidade:</strong> @transacao.Shipping.Address.City</td>
+                <td><strong>Bairro:</strong> @transacao.Shipping.Address.Neighborhood</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Endereço: </strong> @transacao.Shipping.Address.Street</td>
+                <td><strong>Complemento: </strong>@transacao.Shipping.Address.Complementary</td>
+                <td><strong>Número: </strong>@transacao.Shipping.Address.StreetNumber</td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Transportadora:</strong> @Model.FreteEmpresa</td>
+                <td><strong>Valor do frete:</strong> @(((decimal)transacao.Shipping.Fee / 100).ToString("C"))</td>
+                <td>
+                    <strong>Rastreamento: </strong>
+                    @if (Model.FreteCodRastreamento != null)
+                    {
+                        @Model.FreteCodRastreamento
+                    }
+                    else
+                    {
+                        <span>Não emitido</span>
+                    }
+                </td>
+            </tr>
+        </table>
+        <h3>Lista de produtos</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Quantidade</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>TOTAL</th>
+            </tr>
+
+            @foreach (var produto in produtos)
+            {
+                <tr>
+                    <td>@produto.QuantidadeCarrinhoProduto</td>
+                    <td>@produto.Nome</td>
+                    <td>@(((decimal)produto.Valor).ToString("C"))</td>
+                    <td>@((((decimal)produto.Valor) * produto.QuantidadeCarrinhoProduto).ToString("C"))</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="3"><strong>FRETE</strong></td>
+                <td>@(((decimal)transacao.Shipping.Fee / 100).ToString("C"))</td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>TOTAL</strong></td>
+                <td>@Model.ValorTotal.ToString("C")</td>
+            </tr>
+        </table>
+
+        <br />
+        <br />
+        <button class="btn btn-outline-primary btn-lg" id="btn-imprimir">Imprimir</button>
+    </div>
+<script>
+    var botao = document.getElementById("btn-imprimir");
+    botao.addEventListener("click", function () { window.print();})
+</script>

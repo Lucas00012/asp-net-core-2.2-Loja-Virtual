@@ -1,0 +1,124 @@
+﻿@using MultiMarket.Models.ProdutoAgregador
+@using MultiMarket.Models.Cartao
+@model MultiMarket.Models.ViewModel.PagamentoViewModel
+@{
+    ViewData["Title"] = "Index";
+    decimal? Total = 0;
+}
+
+<br />
+<br />
+<div class="container row naosei">
+    <aside class="col-md-4">
+        <div class="box">
+            @foreach (ProdutoItem produto in ViewBag.Produtos)
+            {
+                <div class="itemside mb-4">
+                    @if (produto.ImagemProduto.Count() > 0)
+                    {
+                        <div class="aside"><img src="@produto.ImagemProduto[0].Caminho" class="img-xs"></div>
+                    }
+                    else
+                    {
+                        <div class="aside"><img src="~/img/vender-produtos.png" class="img-xs"></div>
+                    }
+                    <div class="info">
+                        @{
+                            Total += produto.Valor * produto.QuantidadeCarrinhoProduto;
+                        }
+                        <p><strong>@produto.Nome.ToUpper()</strong></p>
+                        <p>R$ @produto.Valor x @produto.QuantidadeCarrinhoProduto = <strong>R$ @(produto.Valor * produto.QuantidadeCarrinhoProduto)</strong></p>
+                    </div>
+                </div>
+            }
+            <h3>Resumo</h3>
+            <br />
+            <div class="fix">
+                <p>Subtotal</p><p><strong>R$ @Total</strong></p>
+            </div>
+            <div class="fix">
+                <p>Frete</p> <p><strong>R$ @((ViewBag.Frete.Valor).ToString("0.00"))</strong></p>
+            </div>
+            <div class="fix">
+                <p>TOTAL</p> <p><strong>R$ @(Total+(decimal?)ViewBag.Frete.Valor)</strong></p>
+            </div>
+        </div>
+    </aside>
+
+    <article class="card col-sm-8">
+        <div class="card-body p-5">
+
+            <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active show" data-toggle="pill" href="#nav-tab-card">
+                        <i class="fa fa-credit-card"></i> Cartão de crédito
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                        <i class="fab"></i>  Boleto bancário
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="nav-tab-card">
+                    <form role="form" method="post">
+                        <div class="form-group">
+                            <label asp-for="CartaoCredito.Nome">Nome (no cartão)</label>
+                            <input type="text" class="form-control" asp-for="CartaoCredito.Nome">
+                            <span class="erro" asp-validation-for="CartaoCredito.Nome"></span>
+                        </div> <!-- form-group.// -->
+
+                        <div class="form-group">
+                            <label asp-for="CartaoCredito.Numero">Número do cartão</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" asp-for="CartaoCredito.Numero">
+                                <div class="input-group-append">
+                                    <span class="input-group-text text-muted">
+                                        <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;
+                                        <i class="fab fa-cc-mastercard"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="erro" asp-validation-for="CartaoCredito.Numero"></span>
+                        </div> <!-- form-group.// -->
+                        <div class="form-group">
+                            <label for="Parcelas">Parcelamento</label>
+                            <select class="form-control" asp-for="Parcelas" asp-items="ViewBag.Parcelas"></select>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label asp-for="CartaoCredito.VencimentoMM"><span class="hidden-xs">Vencimento</span> </label>
+                                    <div class="input-group">
+                                        <input type="number" asp-for="CartaoCredito.VencimentoMM">
+                                        <input type="number" asp-for="CartaoCredito.VencimentoYY">
+                                    </div>
+                                    <p><span class="erro" asp-validation-for="CartaoCredito.VencimentoMM"></span></p>
+                                    <p><span class="erro" asp-validation-for="CartaoCredito.VencimentoYY"></span></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label data-toggle="tooltip" asp-for="CartaoCredito.CVV" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                    <input type="number" asp-for="CartaoCredito.CVV">
+                                    <span class="erro" asp-validation-for="CartaoCredito.CVV"></span>
+                                </div> <!-- form-group.// -->
+                            </div>
+                        </div> <!-- row.// -->
+                        <button class="subscribe btn btn-primary btn-block" type="submit"> Confirmar  </button>
+                    </form>
+                </div> <!-- tab-pane.// -->
+                <div class="tab-pane fade text-center" id="nav-tab-paypal">
+                    <p>Clique aqui para visualizar o boleto bancário e prosseguir com o pagamento</p>
+                    <br />
+                    <p>
+                        <a asp-action="Boleto" asp-controller="Pagamento" class="btn btn-outline-primary btn-lg"> <i class="fab"></i>Visualizar boleto</a>
+                    </p>
+                </div>
+            </div> <!-- tab-content .// -->
+
+        </div> <!-- card-body.// -->
+    </article>
+</div>
