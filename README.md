@@ -6,7 +6,9 @@ validações customizadas, area, layout e importações, TAG helper, HTML helper
 
 *O projeto foi desenvolvido utilizando o padrão MVC, repository e DI.
 
-*Banco de dados utilizado: SQL SERVER juntamente com o ORM Entity Framework Core
+*Banco de dados utilizado: SQL SERVER
+
+*ORM utilizado: Entity Framework Core
 
 
 
