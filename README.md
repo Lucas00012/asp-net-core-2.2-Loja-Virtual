@@ -13,8 +13,14 @@ validações customizadas, area, layout e importações, TAG helper, HTML helper
 # Executando o projeto
 
 *Instale Visual Studio Community
+
+
 Pacotes necessários
+
+
 ->ASP.NET e desenvolvimento Web
+
+
 ->Processamento e armazenamento de dados
 
 *Instale o .net core sdk 2.2
