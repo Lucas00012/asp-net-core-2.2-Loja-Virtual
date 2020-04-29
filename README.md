@@ -25,7 +25,11 @@ Pacotes necessários
 
 *Instale o .net core sdk 2.2
 
+# Observações
 
+Para testar o formulário de contato e a recuperação de senha, será necessário preencher o arquivo 'appsettings.Development.json'
+com as credenciais de uma conta Google (ou simplesmente reconfigure o smtp para outro provedor).
+Caso essas funcionalidades ainda não estejam funcionando, será necessário ativar a opção 'Acesso a app menos seguro'.
 
 # Preview do projeto
 
