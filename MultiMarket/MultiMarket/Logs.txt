@@ -3561,3 +3561,587 @@ System.ObjectDisposedException: The CancellationTokenSource has been disposed.
 2020-04-29 01:17:10.267 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
 2020-04-29 01:17:20.264 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
 2020-04-29 01:17:20.265 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:54:06.493 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-29 02:55:15.909 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 02:55:19.995 -03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'MultiMarket.Database.MultiMarketContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2020-04-29 02:56:29.920 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:29.932 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:29.932 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:29.947 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:29.947 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:29.947 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:30.004 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:30.019 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:30.019 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:30.023 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:30.023 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:30.025 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:30.025 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:30.026 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:31.443 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:31.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:41.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:41.463 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:56:51.547 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:56:51.550 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:01.486 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:01.487 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:11.571 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:11.572 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:21.443 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:21.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:31.424 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:31.425 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:41.498 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:41.498 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:57:51.527 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:57:51.529 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:01.511 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:01.512 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:11.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:11.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:21.468 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:21.470 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:31.441 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:31.442 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:41.675 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:41.676 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:58:51.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:58:51.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:01.475 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:01.477 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:11.781 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:11.783 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:21.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:21.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:31.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:31.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:41.436 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:41.437 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 02:59:51.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 02:59:51.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:01.494 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:01.495 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:11.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:11.436 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:21.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:21.463 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:31.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:31.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:41.467 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:41.469 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:00:51.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:00:51.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:01.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:01.467 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:11.470 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:11.471 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:21.463 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:21.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:31.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:31.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:41.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:41.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:01:51.470 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:01:51.471 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:01.479 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:01.481 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:11.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:11.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:21.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:21.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:31.591 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:31.592 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:41.470 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:41.471 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:02:51.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:02:51.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:01.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:01.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:11.417 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:11.418 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:21.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:21.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:31.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:31.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:41.466 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:41.467 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:03:51.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:03:51.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:01.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:01.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:11.443 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:11.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:21.572 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:21.573 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:31.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:31.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:41.419 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:41.420 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:04:51.474 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:04:51.475 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:01.416 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:01.418 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:11.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:11.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:21.428 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:21.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:31.481 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:31.482 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:41.448 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:41.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:05:51.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:05:51.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:01.428 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:01.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:11.477 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:11.478 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:21.428 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:21.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:31.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:31.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:41.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:41.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:06:51.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:06:51.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:01.487 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:01.488 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:11.428 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:11.428 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:21.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:21.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:31.424 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:31.425 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:41.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:41.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:07:51.494 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:07:51.495 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:01.480 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:01.481 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:11.411 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:11.411 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:21.410 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:21.411 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:32.064 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:32.066 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:41.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:41.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:08:51.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:08:51.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:01.442 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:01.442 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:11.594 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:11.595 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:21.487 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:21.488 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:31.440 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:31.441 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:41.468 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:41.469 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:09:51.440 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:09:51.441 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:01.426 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:01.427 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:11.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:11.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:21.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:21.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:31.421 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:31.422 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:41.476 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:41.477 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:10:51.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:10:51.436 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:01.415 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:01.416 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:11.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:11.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:21.518 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:21.519 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:31.423 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:31.426 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:41.423 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:41.424 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:11:51.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:11:51.430 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:01.503 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:01.504 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:11.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:11.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:21.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:21.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:31.419 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:31.420 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:41.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:41.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:12:51.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:12:51.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:01.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:01.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:11.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:11.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:21.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:21.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:31.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:31.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:41.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:41.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:13:51.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:13:51.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:01.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:01.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:11.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:11.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:21.467 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:21.469 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:31.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:31.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:41.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:41.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:14:51.423 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:14:51.423 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:01.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:01.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:11.540 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:11.561 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:21.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:21.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:31.505 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:31.506 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:41.472 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:41.474 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:15:51.440 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:15:51.442 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:01.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:01.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:11.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:11.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:21.448 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:21.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:31.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:31.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:41.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:41.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:16:51.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:16:51.436 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:01.486 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:01.488 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:11.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:11.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:21.431 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:21.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:31.598 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:31.600 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:41.524 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:41.525 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:17:51.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:17:51.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:01.463 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:01.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:11.438 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:11.439 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:24.505 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:24.507 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:31.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:31.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:41.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:41.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:18:51.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:18:51.466 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:01.425 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:01.426 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:11.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:11.466 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:21.439 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:21.440 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:31.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:31.448 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:41.601 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:41.603 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:19:51.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:19:51.430 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:01.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:01.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:11.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:11.466 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:21.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:21.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:31.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:31.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:41.987 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:41.990 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:20:51.603 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:20:51.604 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:01.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:01.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:11.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:11.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:21.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:21.466 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:31.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:31.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:41.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:41.430 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:21:51.748 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:21:51.749 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:01.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:01.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:11.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:11.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:21.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:21.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:31.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:31.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:41.504 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:41.506 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:22:51.906 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:22:51.908 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:01.485 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:01.487 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:11.427 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:11.429 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:21.430 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:21.431 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:31.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:31.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:41.416 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:41.417 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:23:51.442 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:23:51.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:02.240 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:02.242 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:11.491 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:11.492 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:21.431 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:21.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:31.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:31.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:41.468 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:41.469 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:24:51.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:24:51.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:01.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:01.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:11.752 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:11.753 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:21.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:21.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:31.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:31.452 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:41.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:41.433 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:25:51.490 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:25:51.491 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:01.444 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:01.445 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:12.390 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:12.391 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:21.573 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:21.574 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:31.455 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:31.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:41.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:41.451 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:26:51.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:26:51.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:01.506 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:01.507 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:11.532 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:11.533 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:21.700 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:21.701 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:31.497 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:31.499 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:41.502 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:41.503 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:27:51.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:27:51.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:01.496 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:01.498 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:11.490 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:11.491 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:22.118 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:22.122 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:31.660 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:31.661 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:41.430 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:41.431 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:28:51.582 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:28:51.583 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:01.424 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:01.425 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:11.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:11.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:21.434 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:21.435 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:31.661 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:31.662 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:41.512 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:41.513 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:29:51.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:29:51.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:01.477 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:01.478 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:11.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:11.457 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:21.480 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:21.482 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:31.991 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:31.992 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:41.534 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:41.537 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:30:51.485 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:30:51.486 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:01.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:01.450 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:11.467 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:11.468 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:21.518 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:21.519 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:31.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:31.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:42.017 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:42.018 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:31:51.431 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:31:51.432 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:01.459 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:01.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:11.453 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:11.454 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:21.437 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:21.438 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:31.505 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:31.506 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:41.471 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:41.472 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:32:51.581 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:32:51.582 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:01.446 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:01.447 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:11.456 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:11.458 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:21.477 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:21.479 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:31.460 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:31.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:41.425 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:41.426 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:33:52.355 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:33:52.357 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:01.463 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:01.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:11.461 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:11.462 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:21.438 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:21.439 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:31.448 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:31.449 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:44.464 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:44.465 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:34:51.553 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:34:51.555 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 03:35:01.642 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 03:35:01.643 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:21:30.798 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-29 14:21:51.935 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:21:51.939 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:22:00.800 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:22:10.797 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:22:20.801 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:22:25.060 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 14:22:25.060 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 14:22:35.369 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 14:24:49.347 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-29 14:25:11.590 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:25:12.340 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:25:20.175 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:25:20.179 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:25:30.163 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:25:30.167 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:25:40.172 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:25:40.176 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:26:40.833 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-29 14:26:57.342 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:26:57.348 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:00.997 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:00.999 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:11.097 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:11.099 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:20.996 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:20.997 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:31.032 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:31.033 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:41.229 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:41.231 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:27:51.000 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:27:51.002 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:04.509 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:04.510 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:11.042 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:11.043 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:20.986 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:20.987 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:30.986 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:30.987 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:40.999 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:41.001 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:28:50.984 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:28:50.985 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 14:29:01.006 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-29 14:29:01.008 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---

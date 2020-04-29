@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\MultiMarket\\MultiMarket.csproj": {}
+    "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\MultiMarket\\MultiMarket.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\MultiMarket\\MultiMarket.csproj": {
+    "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\MultiMarket\\MultiMarket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\MultiMarket\\MultiMarket.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\MultiMarket\\MultiMarket.csproj",
         "projectName": "MultiMarket",
-        "projectPath": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\MultiMarket\\MultiMarket.csproj",
+        "projectPath": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\MultiMarket\\MultiMarket.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\MultiMarket\\obj\\",
+        "outputPath": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\MultiMarket\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj": {
-                "projectPath": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj"
+              "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj": {
+                "projectPath": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj"
               }
             }
           }
@@ -139,14 +139,14 @@
         }
       }
     },
-    "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj": {
+    "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj",
         "projectName": "PagarMeCore",
-        "projectPath": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj",
+        "projectPath": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\PagarMeCore.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Documents\\Projetos\\MultiMarket\\PagarMe\\PagarMeCore\\obj\\",
+        "outputPath": "C:\\Users\\lucas\\Documents\\Git\\asp-net-core-2.2-Loja-Virtual\\MultiMarket\\PagarMe\\PagarMeCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

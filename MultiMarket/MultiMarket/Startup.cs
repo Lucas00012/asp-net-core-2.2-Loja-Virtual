@@ -104,9 +104,9 @@ namespace MultiMarket
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            //UseLazyLoadingProxies() importado via nuGet: Microsoft.EntityFrameworkCore.Proxies
-            //Necessário para a chave estrangeira funcionar
-            services.AddDbContext<MultiMarketContext>(options=>options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MultiMarket;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            services.AddDbContext<MultiMarketContext>(options=>
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MultiMarket;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",sql=>sql.CommandTimeout(360)));
+
             services.AddMvc(options =>
             {
                 options.ModelBindingMessageProvider.SetValueIsInvalidAccessor(x => "Valor inválido para o campo");
