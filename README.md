@@ -29,7 +29,8 @@ Pacotes necessários
 
 Para testar o formulário de contato e a recuperação de senha, será necessário preencher o arquivo 'appsettings.Development.json'
 com as credenciais de uma conta Google (ou simplesmente reconfigure o smtp para outro provedor).
-Caso essas funcionalidades ainda não estejam funcionando, será necessário ativar a opção 'Acesso a app menos seguro'.
+Caso essas funcionalidades ainda não estejam funcionando, será necessário ativar a opção 'Acesso a app menos seguro' encontrada
+nas configurações de sua conta Google
 
 # Preview do projeto
 
