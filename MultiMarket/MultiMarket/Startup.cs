@@ -105,7 +105,7 @@ namespace MultiMarket
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<MultiMarketContext>(options=>
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MultiMarket;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",sql=>sql.CommandTimeout(360)));
+                options.UseSqlServer(Configuration.GetValue<string>("Database:Connection"),sql=>sql.CommandTimeout(360)));
 
             services.AddMvc(options =>
             {

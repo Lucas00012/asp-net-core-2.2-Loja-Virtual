@@ -11,6 +11,7 @@ namespace MultiMarket.Models
 {
     public class Colaborador
     {
+        [Key]
         [Display(Name="Código")]
         public int Id { get; set; }
 

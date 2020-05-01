@@ -27,10 +27,13 @@ Pacotes necessários
 
 # Observações
 
+Primeiramente é necessário incluir a string de conexão do seu banco de dados no arquivo 'appsettings.Development.json', e executar em seu banco todo 
+o código contido no arquivo 'QueryPrincipal.sql'.
+
 Para testar o formulário de contato e a recuperação de senha, será necessário preencher o arquivo 'appsettings.Development.json'
-com as credenciais de uma conta Google (ou simplesmente reconfigure o smtp para outro provedor).
+com as credenciais de uma conta Google (lá você tembém pode reconfigurar o smtp para outro provedor).
 Caso essas funcionalidades ainda não estejam funcionando, será necessário ativar a opção 'Acesso a app menos seguro' encontrada
-nas configurações de sua conta Google.
+nas configurações de sua conta G-mail.
 
 O acesso ao painel administrativo se dá pela URL /colaborador/home/login. Há uma conta padrão cadastrada com o
 e-mail 'colaborador@gmail.com' e senha '123456' para testes.

@@ -11,6 +11,7 @@ namespace MultiMarket.Models
 {
     public class Cliente
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
