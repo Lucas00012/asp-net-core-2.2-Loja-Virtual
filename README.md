@@ -32,7 +32,7 @@ com as credenciais de uma conta Google (ou simplesmente reconfigure o smtp para 
 Caso essas funcionalidades ainda não estejam funcionando, será necessário ativar a opção 'Acesso a app menos seguro' encontrada
 nas configurações de sua conta Google.
 
-O acesso ao painel administrativo se dá pela URL /colaborador/colaboradores/home/login. Há uma conta padrão cadastrada com o
+O acesso ao painel administrativo se dá pela URL /colaborador/home/login. Há uma conta padrão cadastrada com o
 e-mail 'colaborador@gmail.com' e senha '123456' para testes.
 
 # Preview do projeto
