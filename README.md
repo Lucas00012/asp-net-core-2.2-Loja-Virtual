@@ -27,8 +27,7 @@ Pacotes necessários
 
 # Observações
 
-Primeiramente é necessário incluir a string de conexão do seu banco de dados no arquivo 'appsettings.Development.json', e executar em seu banco todo 
-o código contido no arquivo 'QueryPrincipal.sql'.
+Primeiramente é necessário incluir a string de conexão do seu banco de dados no arquivo 'appsettings.Development.json', e executar todo o código contido no arquivo 'QueryPrincipal.sql'.
 
 Para testar o formulário de contato e a recuperação de senha, será necessário preencher o arquivo 'appsettings.Development.json'
 com as credenciais de uma conta Google (lá você tembém pode reconfigurar o smtp para outro provedor).
