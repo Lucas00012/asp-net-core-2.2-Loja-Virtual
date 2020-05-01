@@ -4145,3 +4145,114 @@ System.InvalidOperationException: Timeout expired.  The timeout period elapsed p
 2020-04-29 14:28:50.985 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
 2020-04-29 14:29:01.006 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
 2020-04-29 14:29:01.008 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-29 18:02:00.785 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-29 18:02:54.804 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 18:03:00.159 -03:00 [ERR] An error occurred using the connection to database 'MultiMarket' on server '(localdb)\MSSQLLocalDB'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+2020-04-29 18:03:02.851 -03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'MultiMarket.Database.MultiMarketContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2020-04-29 18:03:02.851 -03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'MultiMarket.Database.MultiMarketContext'.
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2020-04-30 20:53:52.472 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-30 20:54:29.652 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:54:29.652 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:54:29.661 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:54:29.681 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:54:31.787 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:54:31.790 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:54:41.638 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:54:41.641 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:54:51.741 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:54:51.743 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:55:01.637 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:55:01.638 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:58:14.768 -03:00 [INF] ---- INICIANDO SERVIDOR ----
+2020-04-30 20:58:31.853 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:58:31.989 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:58:40.347 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:58:40.352 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:58:50.347 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:58:50.352 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:00.340 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:00.344 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:10.342 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:10.345 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:20.347 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:20.350 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:30.343 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:30.346 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:40.351 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:40.354 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 20:59:50.345 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 20:59:50.349 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 21:00:00.345 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 21:00:00.348 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---
+2020-04-30 21:00:10.341 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (inicio) ---
+2020-04-30 21:00:10.347 -03:00 [INF] --- SCHEDULER PedidoPagamentoInvocable (fim) ---

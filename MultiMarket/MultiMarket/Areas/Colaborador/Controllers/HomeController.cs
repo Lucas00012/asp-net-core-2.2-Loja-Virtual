@@ -95,30 +95,28 @@ namespace MultiMarket.Areas.Colaborador.Controllers
         [HttpPost]
         public IActionResult RecuperarSenha([FromForm]Models.Colaborador colaborador)
         {
-            if (colaborador.Email != null)
+            ModelState.Remove("Email");
+            Models.Colaborador colaboradorDB = _colaboradorRepository.ObterColaborador(a => a.Email == colaborador.Email);
+            if (colaboradorDB != null)
             {
-                Models.Colaborador colaboradorDB = _colaboradorRepository.ObterColaborador(a => a.Email == colaborador.Email);
-                if (colaboradorDB != null)
+                try
                 {
-                    try
-                    {
-                        DadosRecuperacaoSenha dados = new DadosRecuperacaoSenha();
-                        dados.ColaboradorId = colaboradorDB.Id;
-                        dados.Data = DateTime.Now;
-                        int verificador = CriarVerificador(colaboradorDB.Id);
-                        dados.Chave = (verificador * 1000000 + new Random().Next(100000, 999999)) * 10 + colaboradorDB.Id % 10;
-                        _email.SendEmailRecuperarSenha(colaboradorDB, dados, false);
-                        _recuperacaoSenhaRepository.Cadastrar(dados);
-                        TempData["MSG_S"] = "E-mail enviado! Confira sua caixa de entrada";
-                        return Redirect("/colaborador/home/login");
-                    }
-                    catch
-                    {
-                        ViewData["MSG_E"] = "Oops! Houve um problema no sistema! Tente novamente";
-                    }
+                    DadosRecuperacaoSenha dados = new DadosRecuperacaoSenha();
+                    dados.ColaboradorId = colaboradorDB.Id;
+                    dados.Data = DateTime.Now;
+                    int verificador = CriarVerificador(colaboradorDB.Id);
+                    dados.Chave = (verificador * 1000000 + new Random().Next(100000, 999999)) * 10 + colaboradorDB.Id % 10;
+                    _email.SendEmailRecuperarSenha(colaboradorDB, dados, false);
+                    _recuperacaoSenhaRepository.Cadastrar(dados);
+                    TempData["MSG_S"] = "E-mail enviado! Confira sua caixa de entrada";
+                    return Redirect("/colaborador/home/login");
                 }
-                else ViewData["MSG_E"] = "O e-mail não consta em nosso sistema!";
+                catch
+                {
+                    ViewData["MSG_E"] = "Oops! Houve um problema no sistema! Tente novamente";
+                }
             }
+            else ViewData["MSG_E"] = "O e-mail não consta em nosso sistema!";
             return View();
         }
         [HttpGet]
