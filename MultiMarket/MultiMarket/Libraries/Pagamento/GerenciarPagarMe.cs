@@ -171,7 +171,7 @@ namespace MultiMarket.Libraries.Pagamento
                     City = enderecoEntrega.Cidade,
                     Neighborhood = enderecoEntrega.Bairro,
                     Street = enderecoEntrega.Rua,
-                    Complementary= enderecoEntrega.Complemento == null ? "" : enderecoEntrega.Complemento,
+                    Complementary= enderecoEntrega.Complemento == null ? "SEM COMPLEMENTO" : enderecoEntrega.Complemento,
                     StreetNumber = enderecoEntrega.Numero.ToString(),
                     Zipcode = RemoverMascara( enderecoEntrega.CEP)
                 }

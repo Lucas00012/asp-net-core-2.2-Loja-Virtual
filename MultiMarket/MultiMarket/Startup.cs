@@ -50,6 +50,9 @@ namespace MultiMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedMemoryCache();
+            services.Configure<CookieTempDataProviderOptions>(options => {
+                options.Cookie.IsEssential = true;
+            });
             services.AddSession(options=>options.Cookie.IsEssential=true);
 
             services.AddScoped<SmtpClient>(options =>

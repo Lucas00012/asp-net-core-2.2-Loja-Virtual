@@ -96,7 +96,7 @@ namespace MultiMarket.Controllers
             {
 
                 Frete frete=_cookieValorPrazoFrete.Consultar().Where(a=>a.CEP==cepDestino && a.CarrinhoId==HashGenerator.CreateMD5(JsonConvert.SerializeObject(_carrinhoCompra.Consultar()))).FirstOrDefault();
-                var options = new CookieOptions() { Expires = DateTime.Now.AddDays(7) };
+                var options = new CookieOptions() { Expires = DateTime.Now.AddDays(7),IsEssential=true };
 
                 HttpContext.Response.Cookies.Append("Carrinho.CEP", cepDestino, options);
                 if (frete != null)
