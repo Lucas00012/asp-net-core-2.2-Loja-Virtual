@@ -24,6 +24,7 @@ Pacotes necessários
 ->Processamento e armazenamento de dados
 
 *Instale o .net core sdk 2.2
+- Link: https://dotnet.microsoft.com/download/dotnet-core/2.2
 
 # Observações
 
