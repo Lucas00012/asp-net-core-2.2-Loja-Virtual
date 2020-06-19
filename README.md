@@ -13,7 +13,7 @@ validações customizadas, area, layout e importações, TAG helper, HTML helper
 # Executando o projeto
 
 *Instale Visual Studio Community
-
+- Link: https://visualstudio.microsoft.com/pt-br/vs/community/
 
 Pacotes necessários
 
